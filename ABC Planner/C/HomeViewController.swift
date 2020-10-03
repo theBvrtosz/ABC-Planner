@@ -16,8 +16,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        goToTaskListsButton.layer.cornerRadius = 10
-        howToUseAppButton.layer.cornerRadius = 10
+        goToTaskListsButton.layer.cornerRadius = 30
+        howToUseAppButton.layer.cornerRadius = 30
     }
     
     override func viewWillAppear(_ animated: Bool) {
