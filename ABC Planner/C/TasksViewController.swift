@@ -19,16 +19,18 @@ class TasksViewController: SwipeTableViewController {
     
     
     override func viewDidLoad() {
-        tableView.register(UINib(nibName: K.taskCellNib, bundle: nil), forCellReuseIdentifier: K.cellId)
-        reloadTableData()
-        tableView.rowHeight = 60.0
         self.title = selectedTaskList?.taskListName
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadTableData()
     }
     
     //MARK: - User Interaction Methods
     @IBAction func addItemButtonClicked(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: K.addTaskSegueId, sender: self)
+        print("ASDFASFSDA")
     }
 
     
@@ -49,23 +51,11 @@ class TasksViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TaskCell
         if let item = displayTasks?[indexPath.row] {
-            cell.taskTitle.text = item.name
-            cell.taskPriority.text = item.priority
-            cell.isDone.image = item.isDone ? UIImage(systemName: "checkmark.rectangle.fill", withConfiguration: .none) : UIImage(systemName: "rectangle", withConfiguration: .none)
-            switch item.priority! {
-             case "A":
-                cell.backgroundColor = UIColor(red: 1.00, green: 0.57, blue: 0.30, alpha: 1.00)
-             case "B":
-                 cell.backgroundColor = UIColor(red: 1.00, green: 0.74, blue: 0.35, alpha: 1.00)
-             case "C":
-                 cell.backgroundColor = UIColor(red: 1.00, green: 0.87, blue: 0.35, alpha: 1.00)
-             default:
-                 cell.backgroundColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-            }
+            cell.taskName.text = item.name
+            item.isDone ? cell.setCellAsCompleted(for: item.priority!) : cell.setCellAsIncompleted(for: item.priority!)
         } else {
-            cell.textLabel?.text = "No Tasks Added Yet"
+            cell.taskName.text = "no tasks added"
         }
-        
         return cell
     }
     

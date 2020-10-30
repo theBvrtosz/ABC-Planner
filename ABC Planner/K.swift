@@ -15,4 +15,7 @@ struct K {
     static let goToTaskListSegueId = "goToTaskList"
     static let goToHowToUseSegueId = "goToHowToUse"
     static let taskCellNib = "TaskCell"
+    static let taskListCellNib = "TaskListCell"
+    static let showNewTaskListPopupSegueId = "ShowNewTaskListPopup"
 }
+

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		223F28EFBE1753C2919F5E44 /* Pods_ABC_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D290E3DF918DE9E988A0962E /* Pods_ABC_Planner.framework */; };
+		F30F6092254B27D500274865 /* AddTaskListPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30F6091254B27D500274865 /* AddTaskListPopupController.swift */; };
+		F33250482529E70B00E7B26F /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33250462529E70B00E7B26F /* TaskListCell.swift */; };
 		F336843E2502BA3900C607F0 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336843D2502BA3900C607F0 /* TasksViewController.swift */; };
 		F33EA140251A6C330006C8CD /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33EA13F251A6C330006C8CD /* AddTaskViewController.swift */; };
 		F35348FF25011E8100B6E78C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35348FE25011E8100B6E78C /* AppDelegate.swift */; };
@@ -22,13 +24,15 @@
 		F36FF09E251E009C005E0C48 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FF09D251E009C005E0C48 /* SwipeTableViewController.swift */; };
 		F36FF0A0251E105A005E0C48 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FF09F251E105A005E0C48 /* HomeViewController.swift */; };
 		F38D63532521245300BC5B8B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38D63512521245300BC5B8B /* TaskCell.swift */; };
-		F38D63542521245300BC5B8B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38D63522521245300BC5B8B /* TaskCell.xib */; };
+		F3C7CB35254C4AA700AA06D0 /* TableDataReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C7CB34254C4AA700AA06D0 /* TableDataReloadProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35AA3CD58787509522A5D3EA /* Pods-ABC Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABC Planner.debug.xcconfig"; path = "Target Support Files/Pods-ABC Planner/Pods-ABC Planner.debug.xcconfig"; sourceTree = "<group>"; };
 		39963F82514D0639D8BF8EC1 /* Pods-ABC Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABC Planner.release.xcconfig"; path = "Target Support Files/Pods-ABC Planner/Pods-ABC Planner.release.xcconfig"; sourceTree = "<group>"; };
 		D290E3DF918DE9E988A0962E /* Pods_ABC_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABC_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30F6091254B27D500274865 /* AddTaskListPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskListPopupController.swift; sourceTree = "<group>"; };
+		F33250462529E70B00E7B26F /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		F336843D2502BA3900C607F0 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		F33EA13F251A6C330006C8CD /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		F35348FB25011E8100B6E78C /* ABC Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABC Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +49,7 @@
 		F36FF09D251E009C005E0C48 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		F36FF09F251E105A005E0C48 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F38D63512521245300BC5B8B /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		F38D63522521245300BC5B8B /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		F3C7CB34254C4AA700AA06D0 /* TableDataReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataReloadProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 				F33EA13F251A6C330006C8CD /* AddTaskViewController.swift */,
 				F36FF09D251E009C005E0C48 /* SwipeTableViewController.swift */,
 				F36FF09F251E105A005E0C48 /* HomeViewController.swift */,
+				F30F6091254B27D500274865 /* AddTaskListPopupController.swift */,
+				F3C7CB34254C4AA700AA06D0 /* TableDataReloadProtocol.swift */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -128,7 +134,7 @@
 			children = (
 				F353490425011E8100B6E78C /* Main.storyboard */,
 				F38D63512521245300BC5B8B /* TaskCell.swift */,
-				F38D63522521245300BC5B8B /* TaskCell.xib */,
+				F33250462529E70B00E7B26F /* TaskListCell.swift */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -171,7 +177,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Bartosz Gejgał";
 				TargetAttributes = {
 					F35348FA25011E8100B6E78C = {
@@ -202,7 +208,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F38D63542521245300BC5B8B /* TaskCell.xib in Resources */,
 				F353490B25011E8300B6E78C /* LaunchScreen.storyboard in Resources */,
 				F353490825011E8300B6E78C /* Assets.xcassets in Resources */,
 				F353490625011E8100B6E78C /* Main.storyboard in Resources */,
@@ -262,8 +267,11 @@
 				F33EA140251A6C330006C8CD /* AddTaskViewController.swift in Sources */,
 				F353490325011E8100B6E78C /* TaskListsViewCotroller.swift in Sources */,
 				F35A7232250243110097C665 /* Task.swift in Sources */,
+				F33250482529E70B00E7B26F /* TaskListCell.swift in Sources */,
 				F36FF09E251E009C005E0C48 /* SwipeTableViewController.swift in Sources */,
 				F36FF0A0251E105A005E0C48 /* HomeViewController.swift in Sources */,
+				F3C7CB35254C4AA700AA06D0 /* TableDataReloadProtocol.swift in Sources */,
+				F30F6092254B27D500274865 /* AddTaskListPopupController.swift in Sources */,
 				F336843E2502BA3900C607F0 /* TasksViewController.swift in Sources */,
 				F38D63532521245300BC5B8B /* TaskCell.swift in Sources */,
 				F35A723425024A8B0097C665 /* K.swift in Sources */,
@@ -320,6 +328,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -380,6 +389,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

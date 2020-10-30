@@ -15,72 +15,24 @@ class TaskListsViewCotroller: SwipeTableViewController{
     var taskListsArray: Results<TaskList>?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //showing navigation controller
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
-        loadTaskLists()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
-        tableView.rowHeight = 60.0
+        super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // reloading data in table
         loadTaskLists()
     }
     
     //MARK: - User interactioin methods
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
-        let currentDate = Date()
-        
-        // alert instance
-        let alert = UIAlertController(title: "Add New Task List", message: "", preferredStyle: .alert)
-        
-        // task list title text field
-        var textField = UITextField()
-        
-        alert.addTextField { (taskListTitleTextField) in
-            taskListTitleTextField.placeholder = "Task List Title"
-            textField = taskListTitleTextField
-        }
-        
-        // add task list action
-        let addTaskListAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            if let taskListTitle = textField.text {
-                self.addNewTaskList(for: currentDate, with: taskListTitle)
-            }
-        }
-        
-        // cancel action action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        // adding actions to the alert
-        alert.addAction(addTaskListAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
+        performSegue(withIdentifier: K.showNewTaskListPopupSegueId, sender: self)
     }
     
-    private func addNewTaskList(for date: Date, with title: String) {
-        let newTaskList = TaskList()
-        newTaskList.dateCreated = date
-        newTaskList.taskListName = title
-        saveTaskList(taskList: newTaskList)
-        loadTaskLists()
-    }
     
     //MARK: - DataManipoulation Methods
-    func saveTaskList(taskList: TaskList){
-        do {
-            try realm.write{
-                realm.add(taskList)
-            }
-        } catch {
-            print("error while saving taskList do realm: \(error)")
-        }
-    }
-    
     func loadTaskLists(){
         taskListsArray = realm.objects(TaskList.self).sorted(byKeyPath: "dateCreated", ascending: false)
         tableView.reloadData()
@@ -104,31 +56,44 @@ class TaskListsViewCotroller: SwipeTableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TaskListCell
         
         if let taskList = taskListsArray?[indexPath.row] {
-            cell.textLabel?.text = taskList.taskListName
+            
+            // setting task list title
+            cell.taskListTitle.text = taskList.taskListName
+            
+            // setting task list completion indicator
             let tasksCount = taskList.tasks.count
             let finishedTasksCount = taskList.tasks.filter("isDone == true").count
-            cell.detailTextLabel?.text = "\(finishedTasksCount) / \(tasksCount) tasks completed"
+            cell.taskListCompletionIndicator.text = "\(finishedTasksCount) / \(tasksCount) tasks completed"
             
-        } else {
-            cell.textLabel?.text = "no dates added yet"
-        }
+        } 
         
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TasksViewController
-        
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedTaskList = taskListsArray![indexPath.row]
+        if segue.identifier == K.goToTasksSegueId {
+            let destinationVC = segue.destination as! TasksViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedTaskList = taskListsArray![indexPath.row]
+            }
+        } else {
+            let destinationVC = segue.destination as! AddTaskListPopupController
+            destinationVC.tableReloadDelegate = self
         }
     }
     
     //MARK: - UITableViewDelegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.goToTasksSegueId, sender: self)
+    }
+}
+
+extension TaskListsViewCotroller: tableDataReloadDelegate {
+    func reloadTableData() {
+        loadTaskLists()
     }
 }

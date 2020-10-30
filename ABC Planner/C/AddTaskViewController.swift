@@ -10,15 +10,18 @@ import Foundation
 import UIKit
 import RealmSwift
 
-protocol tableDataReloadDelegate {
-    func reloadTableData()
-}
+
 
 class AddTaskViewController: UIViewController {
     
-    @IBOutlet weak var addTaskButton: UIButton!
+    
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var priorityPicker: UISegmentedControl!
+    @IBOutlet weak var addTaskButton: UIButton!
+    
+    
+    
     
     var selectedTaskList: TaskList?
     var tableReloadDelegate: tableDataReloadDelegate!
@@ -27,11 +30,14 @@ class AddTaskViewController: UIViewController {
     let priorityArray = ["A", "B", "C"]
     
     override func viewDidLoad() {
-        addTaskButton.layer.cornerRadius = 15
-    }
-
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        backgroundView.layer.cornerRadius = 25
+        
+        addTaskButton.layer.cornerRadius = 20
+        
+        taskNameTextField.layer.borderWidth = 1.0
+        taskNameTextField.layer.cornerRadius = 18
+        taskNameTextField.layer.borderColor = CGColor(red: 0.44, green: 0.44, blue: 0.44, alpha: 1.00)
+        
     }
     
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
@@ -53,4 +59,9 @@ class AddTaskViewController: UIViewController {
         self.tableReloadDelegate.reloadTableData()
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
 }
